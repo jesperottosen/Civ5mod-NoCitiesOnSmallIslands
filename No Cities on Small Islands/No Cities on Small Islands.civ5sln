@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# ModBuddy Solution File, Format Version 11.00
+Project("{F5FC21B5-7CC2-458A-ABBA-992F515BBA20}") = "No Cities on Small Islands", "No Cities on Small Islands\No Cities on Small Islands.civ5proj", "{D0CB7543-8D3C-42F0-81DF-03C7B5F3AA4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|x86 = Default|x86
+		Deploy Only|x86 = Deploy Only|x86
+		Package Only|x86 = Package Only|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0CB7543-8D3C-42F0-81DF-03C7B5F3AA4E}.Default|x86.ActiveCfg = Default|x86
+		{D0CB7543-8D3C-42F0-81DF-03C7B5F3AA4E}.Default|x86.Build.0 = Default|x86
+		{D0CB7543-8D3C-42F0-81DF-03C7B5F3AA4E}.Deploy Only|x86.ActiveCfg = Deploy Only|x86
+		{D0CB7543-8D3C-42F0-81DF-03C7B5F3AA4E}.Deploy Only|x86.Build.0 = Deploy Only|x86
+		{D0CB7543-8D3C-42F0-81DF-03C7B5F3AA4E}.Package Only|x86.ActiveCfg = Package Only|x86
+		{D0CB7543-8D3C-42F0-81DF-03C7B5F3AA4E}.Package Only|x86.Build.0 = Package Only|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

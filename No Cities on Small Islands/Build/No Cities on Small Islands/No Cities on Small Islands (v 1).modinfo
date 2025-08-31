@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mod id="8c623d0e-5b41-433e-bc64-470e2ff1bd4c" version="1">
+  <Properties>
+    <Name>No Cities on Small Islands</Name>
+    <Stability>Alpha</Stability>
+    <Teaser>Restrict City Creation on Small Islands
+---</Teaser>
+    <Description>Restrict City Creation on Small Islands[NEWLINE]
+---[NEWLINE]
+
+Key DLL work by whoward69
+
+---[NEWLINE]
+Forum discussion:[NEWLINE]
+https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/#post-16860489</Description>
+    <Authors>yepzer</Authors>
+    <SpecialThanks>whoward69</SpecialThanks>
+    <HideSetupGame>0</HideSetupGame>
+    <Homepage>http://https://github.com/jesperottosen/Civ5mod-NoCitiesOnSmallIslands</Homepage>
+    <AffectsSavedGames>0</AffectsSavedGames>
+    <SupportsSinglePlayer>1</SupportsSinglePlayer>
+    <SupportsMultiplayer>1</SupportsMultiplayer>
+    <SupportsHotSeat>1</SupportsHotSeat>
+    <SupportsMac>1</SupportsMac>
+    <ReloadAudioSystem>0</ReloadAudioSystem>
+    <ReloadLandmarkSystem>0</ReloadLandmarkSystem>
+    <ReloadStrategicViewSystem>0</ReloadStrategicViewSystem>
+    <ReloadUnitSystem>0</ReloadUnitSystem>
+  </Properties>
+  <Dependencies />
+  <References />
+  <Blocks />
+  <Files>
+    <File md5="188335A75D3308318A12F1CBBA8D46E2" import="0">CvGameCore_Expansion2.dll</File>
+    <File md5="913F99B5E3D19CC44174CD5B3ECE234F" import="0">LUA/No Cities on Small Islands.lua</File>
+    <File md5="13710887ACF99EEE82F479266B8E36EA" import="0">SQL/ExpandDatabase.sql</File>
+  </Files>
+  <Actions>
+    <OnGetDLLPath>
+      <SetDllPath>CvGameCore_Expansion2.dll</SetDllPath>
+    </OnGetDLLPath>
+    <OnModActivated>
+      <UpdateDatabase>SQL/ExpandDatabase.sql</UpdateDatabase>
+    </OnModActivated>
+  </Actions>
+</Mod>
