@@ -82,11 +82,11 @@ function CountPlotWater(plot)
 end
 
 --------------------------------------------------------------
-function NCoSI_CanFoundCity(iPlayer,iX,iY)
+function onCanFoundCity(iPlayer,iPlotX,iPlotY)
 	print("CanFoundCity: ")
 	
 	-- Initialize --
-	local pPlot = Map.GetPlot(iX,iY)
+	local pPlot = Map.GetPlot(iPlotX,iPlotY)
 	if not pPlot then return false end
 	if (pPlot:IsCity()) then return false end
 	if (pPlot:IsWater()) then return false end
@@ -119,4 +119,4 @@ function NCoSI_CanFoundCity(iPlayer,iX,iY)
 end
 
 --------------------------------------------------------------
-GameEvents.PlayerCanFoundCity.Add(NCoSI_CanFoundCity)
+GameEvents.PlayerCanFoundCity.Add(onCanFoundCity)
