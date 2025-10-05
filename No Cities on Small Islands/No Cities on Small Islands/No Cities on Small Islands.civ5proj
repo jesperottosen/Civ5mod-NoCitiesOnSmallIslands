@@ -7,14 +7,10 @@
     <Guid>8c623d0e-5b41-433e-bc64-470e2ff1bd4c</Guid>
     <ModVersion>1</ModVersion>
     <Stability>Alpha</Stability>
-    <Teaser>Restrict City Creation on Small Islands
----</Teaser>
-    <Description>Restrict City Creation on Small Islands[NEWLINE]
----[NEWLINE]
+    <Teaser>Restrict City Creation on Small Islands</Teaser>
+    <Description>Includes a check before city building wrt the number of water tiles around the location. Key DLL work by whoward69 wrt. check before build. Plot math by connan.morris.
 
-Key DLL work by whoward69
-
----[NEWLINE]
+[NEWLINE]
 Forum discussion:[NEWLINE]
 https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/#post-16860489</Description>
     <Authors>yepzer</Authors>
@@ -30,17 +26,30 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
     <ModReferences />
     <Homepage>http://https://github.com/jesperottosen/Civ5mod-NoCitiesOnSmallIslands</Homepage>
     <ModActions>
-      <Action>
-        <Set>OnGetDLLPath</Set>
-        <Type>SetDllPath</Type>
-        <FileName>CvGameCore_Expansion2.dll</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/ExpandDatabase.sql</FileName>
-      </Action>
     </ModActions>
+    <ModDependencies>
+      <Association>
+        <Type>Dlc</Type>
+        <Name>Expansion 2 - Brave New World</Name>
+        <Id>6DA07636-4123-4018-B643-6575B4EC336B</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Dlc</Type>
+        <Name>Expansion 1 - Gods and Kings</Name>
+        <Id>0E3751A1-F840-4e1b-9706-519BF484E59D</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Various Mod Components [ICON_FLOWER]</Name>
+        <Id>d1b6328c-ff44-4b0d-aad7-c657f83610cd</Id>
+        <MinVersion>100</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModDependencies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -55,18 +64,9 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="LUA" />
-    <Folder Include="SQL" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CvGameCore_Expansion2.dll">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
     <Content Include="LUA\No Cities on Small Islands.lua">
-      <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
-    </Content>
-    <Content Include="SQL\ExpandDatabase.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>

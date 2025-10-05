@@ -1,4 +1,0 @@
--- No Cities on Small Islands
--- Author: yepzer
--- DateCreated: 8/31/2025 5:21:44 PM
---------------------------------------------------------------
