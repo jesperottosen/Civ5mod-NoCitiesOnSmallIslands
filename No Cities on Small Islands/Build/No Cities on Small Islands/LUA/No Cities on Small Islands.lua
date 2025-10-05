@@ -1,10 +1,10 @@
 -- No Cities on Small Islands
 -- Author: yepzer
+-- Original PlotMath by connan.morris
 -- DateCreated: 8/31/2025 5:21:44 PM
 --------------------------------------------------------------
 --------------------------------------------------------------
 print("Loaded OK")
-local cMAX_WATERTILES = 3
 
 --------------------------------------------------------------
 -- connan.morris: Methods for finding plots in any direction from a given plot
@@ -76,23 +76,46 @@ PlotMath = {};
 	end
 
 --------------------------------------------------------------
-
+function CountPlotWater(plot)
+	if (plot:IsWater() or plot:IsFreshWater()) then return 1 end
+	return 0
+end
 
 --------------------------------------------------------------
 function NCoSI_CanFoundCity(iPlayer,iX,iY)
-	print("CanFound")
+	print("CanFoundCity: ")
 	
 	-- Initialize --
 	local pPlot = Map.GetPlot(iX,iY)
 	if not pPlot then return false end
 	if (pPlot:IsCity()) then return false end
+	if (pPlot:IsWater()) then return false end
+	if (pPlot:IsFreshWater()) then return false end
 
+	print("CanFoundCity: count")
+	--- count water around plot
+	local ee = CountPlotWater(PlotMath.getHexEast(pPlot))
+	local ww = CountPlotWater(PlotMath.getHexWest(pPlot))
+	local nw = CountPlotWater(PlotMath.getHexNorthWest(pPlot))
+	local ne = CountPlotWater(PlotMath.getHexNorthEast(pPlot))
+	local sw = CountPlotWater(PlotMath.getHexSouthWest(pPlot))
+	local se = CountPlotWater(PlotMath.getHexSouthEast(pPlot))
+	local result = ee + ww + nw + ne + sw + se
+
+	print("CanFoundCity: eval")
 	--- evaluate
-	local result = 6
-
-
-	--- return
-	return (result > cMAX_WATERTILES)
+	if (result == 0) then return false end
+	if (result == 1) then return false end
+	if (result == 2) then
+		if ((ee == 1) and (ww == 1)) then return true end
+		if ((sw == 1) and (ne == 1)) then return true end
+		if ((se == 1) and (nw == 1)) then return true end
+		return false
+	end
+	if (result == 3) then return true end
+	if (result == 4) then return true end
+	if (result == 5) then return true end
+	if (result == 6) then return true end
 end
 
 --------------------------------------------------------------

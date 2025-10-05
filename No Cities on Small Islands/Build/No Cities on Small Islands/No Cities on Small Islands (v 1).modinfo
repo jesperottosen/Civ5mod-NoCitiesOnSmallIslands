@@ -3,14 +3,8 @@
   <Properties>
     <Name>No Cities on Small Islands</Name>
     <Stability>Alpha</Stability>
-    <Teaser>Restrict City Creation on Small Islands
----</Teaser>
-    <Description>Restrict City Creation on Small Islands.[NEWLINE]
-[NEWLINE]
-[NEWLINE]
-Key DLL work by whoward69 wrt. CanBuild
-
-[NEWLINE]
+    <Teaser>Restrict City Creation on Small Islands</Teaser>
+    <Description>Includes a check before city building wrt the number of water tiles around the location. Key DLL work by whoward69 wrt. check before build. Plot math by connan.morris.[NEWLINE]
 Forum discussion:[NEWLINE]
 https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/#post-16860489</Description>
     <Authors>yepzer</Authors>
@@ -35,6 +29,12 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
   <References />
   <Blocks />
   <Files>
-    <File md5="9F2F6593A2F4B6D4FDA6B58C7C7064A0" import="0">LUA/No Cities on Small Islands.lua</File>
+    <File md5="E49AB9ADAF05604A11C19CDB29B7CD75" import="0">LUA/No Cities on Small Islands.lua</File>
   </Files>
+  <EntryPoints>
+    <EntryPoint type="InGameUIAddin" file="LUA/No Cities on Small Islands.lua">
+      <Name>NCoSI_CanFoundCity</Name>
+      <Description>NCoSI_CanFoundCity</Description>
+    </EntryPoint>
+  </EntryPoints>
 </Mod>

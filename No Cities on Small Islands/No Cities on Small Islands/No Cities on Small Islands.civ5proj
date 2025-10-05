@@ -9,10 +9,8 @@
     <Stability>Alpha</Stability>
     <Teaser>Restrict City Creation on Small Islands</Teaser>
     <Description>Includes a check before city building wrt the number of water tiles around the location. Key DLL work by whoward69 wrt. check before build. Plot math by connan.morris.
-
-[NEWLINE]
-Forum discussion:[NEWLINE]
-https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/#post-16860489</Description>
+[NEWLINE]Forum discussion:[NEWLINE]
+https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/</Description>
     <Authors>yepzer</Authors>
     <SpecialThanks>whoward69</SpecialThanks>
     <AffectsSavedGames>false</AffectsSavedGames>
@@ -50,6 +48,14 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
         <MaxVersion>999</MaxVersion>
       </Association>
     </ModDependencies>
+    <ModContent>
+      <Content xmlns="">
+        <Type>InGameUIAddin</Type>
+        <Name>NCoSI_CanFoundCity</Name>
+        <Description>NCoSI_CanFoundCity</Description>
+        <FileName>LUA/No Cities on Small Islands.lua</FileName>
+      </Content>
+    </ModContent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
