@@ -77,6 +77,7 @@ PlotMath = {};
 
 --------------------------------------------------------------
 function CountPlotWater(plot)
+	print("CountPlotWater: ")
 	if (plot:IsWater() or plot:IsFreshWater()) then return 1 end
 	return 0
 end
@@ -118,5 +119,12 @@ function onCanFoundCity(iPlayer,iPlotX,iPlotY)
 	if (result == 6) then return true end
 end
 
+function hejmor(iPlayer, iPlotX, iPlotY)
+	print("hejmor: "..iPlayer)
+	return false
+end
+
+
 --------------------------------------------------------------
-GameEvents.PlayerCanFoundCity.Add(onCanFoundCity)
+GameEvents.PlayerCanFoundCity.Add( hejmor )
+GameEvents.PlayerCanFoundCityRegardless.Add( hejmor )	

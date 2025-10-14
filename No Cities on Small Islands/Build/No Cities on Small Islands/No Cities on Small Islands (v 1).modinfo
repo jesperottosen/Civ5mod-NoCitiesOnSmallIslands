@@ -29,8 +29,14 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
   <References />
   <Blocks />
   <Files>
-    <File md5="7D3A4B51F92229710F3FED6DB4760C9A" import="0">LUA/No Cities on Small Islands.lua</File>
+    <File md5="882D5BC0E83B6B364660232C348C8D09" import="0">LUA/No Cities on Small Islands.lua</File>
+    <File md5="CEA760961F34939664B6A2A9A130C906" import="0">XML/CustomModOptions.xml</File>
   </Files>
+  <Actions>
+    <OnModActivated>
+      <UpdateDatabase>XML/CustomModOptions.xml</UpdateDatabase>
+    </OnModActivated>
+  </Actions>
   <EntryPoints>
     <EntryPoint type="InGameUIAddin" file="LUA/No Cities on Small Islands.lua">
       <Name>NCoSI_CanFoundCity</Name>

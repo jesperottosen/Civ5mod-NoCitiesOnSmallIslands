@@ -77,13 +77,14 @@ PlotMath = {};
 
 --------------------------------------------------------------
 function CountPlotWater(plot)
+	print("CountPlotWater: ")
 	if (plot:IsWater() or plot:IsFreshWater()) then return 1 end
 	return 0
 end
 
 --------------------------------------------------------------
 function onCanFoundCity(iPlayer,iPlotX,iPlotY)
-	print("CanFoundCity: ")
+	print("onCanFoundCity: ")
 	
 	-- Initialize --
 	local pPlot = Map.GetPlot(iPlotX,iPlotY)
@@ -92,7 +93,7 @@ function onCanFoundCity(iPlayer,iPlotX,iPlotY)
 	if (pPlot:IsWater()) then return false end
 	if (pPlot:IsFreshWater()) then return false end
 
-	print("CanFoundCity: count")
+	print("onCanFoundCity: count")
 	--- count water around plot
 	local ee = CountPlotWater(PlotMath.getHexEast(pPlot))
 	local ww = CountPlotWater(PlotMath.getHexWest(pPlot))
@@ -102,7 +103,7 @@ function onCanFoundCity(iPlayer,iPlotX,iPlotY)
 	local se = CountPlotWater(PlotMath.getHexSouthEast(pPlot))
 	local result = ee + ww + nw + ne + sw + se
 
-	print("CanFoundCity: eval")
+	print("onCanFoundCity: eval")
 	--- evaluate
 	if (result == 0) then return false end
 	if (result == 1) then return false end
@@ -119,4 +120,4 @@ function onCanFoundCity(iPlayer,iPlotX,iPlotY)
 end
 
 --------------------------------------------------------------
-GameEvents.PlayerCanFoundCity.Add(onCanFoundCity)
+GameEvents.PlayerCanFoundCity.Add( onCanFoundCity )

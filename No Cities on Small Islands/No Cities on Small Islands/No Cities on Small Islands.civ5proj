@@ -24,6 +24,11 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
     <ModReferences />
     <Homepage>http://https://github.com/jesperottosen/Civ5mod-NoCitiesOnSmallIslands</Homepage>
     <ModActions>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>XML/CustomModOptions.xml</FileName>
+      </Action>
     </ModActions>
     <ModDependencies>
       <Association>
@@ -70,9 +75,14 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="LUA" />
+    <Folder Include="XML" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LUA\No Cities on Small Islands.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="XML\CustomModOptions.xml">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>

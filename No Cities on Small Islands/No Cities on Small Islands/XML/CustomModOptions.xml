@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+  <CustomModOptions>
+    <!-- Event sent about city founding (v68) -->
+    <!--   GameEvents.PlayerCanFoundCity.Add(function(iPlayer, iPlotX, iPlotY) return true end) -->
+    <!--   GameEvents.PlayerCanFoundCityRegardless.Add(function(iPlayer, iPlotX, iPlotY) return false end) -->
+	  <Update>
+		  <Where Name="EVENTS_CITY_FOUNDING"/>
+		  <Set Value="1"/>
+	  </Update>
+  </CustomModOptions>
+
+</GameData>
