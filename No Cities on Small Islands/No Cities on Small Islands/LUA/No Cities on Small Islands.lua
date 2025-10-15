@@ -1,122 +1,62 @@
 -- No Cities on Small Islands
 -- Author: yepzer
--- Original PlotMath by connan.morris
 -- DateCreated: 8/31/2025 5:21:44 PM
 --------------------------------------------------------------
 --------------------------------------------------------------
 print("Loaded OK")
 
 --------------------------------------------------------------
--- connan.morris: Methods for finding plots in any direction from a given plot
-PlotMath = {};
-
-	function PlotMath.isEvenRow(yPosition)
-		if yPosition == 0 or math.fmod(yPosition,2) == 0 then
-			return true
-		end
-		return false
-	end
-
-	function PlotMath.getHexNorthWest(position)
-		local newPosition = {}
-		newPosition.xPosition = position.xPosition
-		newPosition.yPosition = position.yPosition + 1
-
-		if PlotMath.isEvenRow(position.yPosition) == true then
-			newPosition.xPosition = newPosition.xPosition - 1
-		end
-		return newPosition
-	end
-
-	function PlotMath.getHexNorthEast(position)
-		local newPosition = {}
-		newPosition.xPosition = position.xPosition
-		newPosition.yPosition = position.yPosition + 1
-
-		if PlotMath.isEvenRow(position.yPosition) == false then
-			newPosition.xPosition = newPosition.xPosition + 1
-		end
-		return newPosition
-	end
-
-	function PlotMath.getHexSouthWest(position)
-		local newPosition = {}
-		newPosition.xPosition = position.xPosition 
-		newPosition.yPosition = position.yPosition - 1
-
-		if PlotMath.isEvenRow(position.yPosition) == true then
-			newPosition.xPosition = newPosition.xPosition - 1
-		end
-		return newPosition
-	end
-
-	function PlotMath.getHexSouthEast(position)
-		local newPosition = {}
-		newPosition.xPosition = position.xPosition
-		newPosition.yPosition = position.yPosition - 1
-
-		if PlotMath.isEvenRow(position.yPosition) == false then
-			newPosition.xPosition = newPosition.xPosition + 1
-		end
-		return newPosition
-	end
-
-	function PlotMath.getHexEast(position)
-		local newPosition = {}
-		newPosition.xPosition = position.xPosition + 1
-		newPosition.yPosition = position.yPosition
-		return newPosition
-	end
-
-	function PlotMath.getHexWest(position)
-		local newPosition = {}
-		newPosition.xPosition = position.xPosition - 1
-		newPosition.yPosition = position.yPosition
-		return newPosition
-	end
-
---------------------------------------------------------------
-function CountPlotWater(plot)
-	print("CountPlotWater: ")
-	if (plot:IsWater() or plot:IsFreshWater()) then return 1 end
+function CountIfWater(pPlot)
+	if pPlot:IsWater() then return 1 end
 	return 0
 end
 
 --------------------------------------------------------------
 function onCanFoundCity(iPlayer,iPlotX,iPlotY)
-	print("onCanFoundCity: ")
-	
+
 	-- Initialize --
-	local pPlot = Map.GetPlot(iPlotX,iPlotY)
-	if not pPlot then return false end
-	if (pPlot:IsCity()) then return false end
-	if (pPlot:IsWater()) then return false end
-	if (pPlot:IsFreshWater()) then return false end
+	local iEast = CountIfWater(Map.PlotDirection(iPlotX,iPlotY,DirectionTypes["DIRECTION_EAST"]))
+	local iWest = CountIfWater(Map.PlotDirection(iPlotX,iPlotY,DirectionTypes["DIRECTION_WEST"]))
+	local iNorthEast = CountIfWater(Map.PlotDirection(iPlotX,iPlotY,DirectionTypes["DIRECTION_NORTHEAST"]))
+	local iNorthWest = CountIfWater(Map.PlotDirection(iPlotX,iPlotY,DirectionTypes["DIRECTION_NORTHWEST"]))
+	local iSouthEast = CountIfWater(Map.PlotDirection(iPlotX,iPlotY,DirectionTypes["DIRECTION_SOUTHEAST"]))
+	local iSouthWest = CountIfWater(Map.PlotDirection(iPlotX,iPlotY,DirectionTypes["DIRECTION_SOUTHWEST"]))
+	local iWaterResult = iEast + iWest + iNorthEast + iNorthWest + iSouthEast + iSouthWest
+	local bCanFoundCity = true
 
-	print("onCanFoundCity: count")
-	--- count water around plot
-	local ee = CountPlotWater(PlotMath.getHexEast(pPlot))
-	local ww = CountPlotWater(PlotMath.getHexWest(pPlot))
-	local nw = CountPlotWater(PlotMath.getHexNorthWest(pPlot))
-	local ne = CountPlotWater(PlotMath.getHexNorthEast(pPlot))
-	local sw = CountPlotWater(PlotMath.getHexSouthWest(pPlot))
-	local se = CountPlotWater(PlotMath.getHexSouthEast(pPlot))
-	local result = ee + ww + nw + ne + sw + se
+	-- print("onCanFoundCity WaterResults:  "..iNorthWest.." "..iNorthEast)
+	-- print("onCanFoundCity WaterResults: "..iWest.." * "..iEast)
+	-- print("onCanFoundCity WaterResults:  "..iSouthWest.." "..iSouthEast)
 
-	print("onCanFoundCity: eval")
 	--- evaluate
-	if (result == 0) then return false end
-	if (result == 1) then return false end
-	if (result == 2) then
-		if ((ee == 1) and (ww == 1)) then return true end
-		if ((sw == 1) and (ne == 1)) then return true end
-		if ((se == 1) and (nw == 1)) then return true end
-		return false
-	end
-	if (result == 3) then return true end
-	if (result == 4) then return true end
-	if (result == 5) then return true end
-	if (result == 6) then return true end
+	if (iWaterResult == 6) then bCanFoundCity = false end
+	if (iWaterResult == 5) then bCanFoundCity = false end
+	if (iWaterResult == 4) then 
+		-- default false at 4, unless
+		bCanFoundCity = false 
+		-- -*-
+		if ((iEast == 0) and (iWest == 0)) then bCanFoundCity = true end 
+
+		--  \*- /*- -*/ -*\
+		if ((iEast == 0) and (iNorthWest == 0)) then bCanFoundCity = true end
+		if ((iEast == 0) and (iSouthhWest == 0)) then bCanFoundCity = true end
+		if ((iWest == 0) and (iNorthEast == 0)) then bCanFoundCity = true end
+		if ((iWest == 0) and (iSouthEast == 0)) then bCanFoundCity = true end
+
+		--  / \   \  / 
+		-- /   \  /  \
+		if ((iNorthEast == 0) and (iSouthWest == 0)) then bCanFoundCity = true end
+		if ((iSouthEast == 0) and (iNorthWest == 0)) then bCanFoundCity = true end
+		if ((iNorthEast == 0) and (iSouthEast == 0)) then bCanFoundCity = true end
+		if ((iSouthWest == 0) and (iNorthWest == 0)) then bCanFoundCity = true end
+		
+	end	
+	if (iWaterResult == 3) then bCanFoundCity = true end
+	if (iWaterResult == 2) then bCanFoundCity = true end
+	if (iWaterResult == 1) then bCanFoundCity = true end
+	if (iWaterResult == 0) then bCanFoundCity = true end
+
+	return bCanFoundCity
 end
 
 --------------------------------------------------------------
