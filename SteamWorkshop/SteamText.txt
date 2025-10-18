@@ -1,0 +1,5 @@
+Includes a check before city building wrt the number of water tiles around the location. 
+Allows for some canal-type locations.
+Key DLL work by whoward69 requires Various Mod Components (v 105).
+Forum discussion: 
+https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/

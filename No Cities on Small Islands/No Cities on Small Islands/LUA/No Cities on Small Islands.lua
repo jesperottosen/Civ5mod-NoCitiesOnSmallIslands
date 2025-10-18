@@ -32,8 +32,9 @@ function onCanFoundCity(iPlayer,iPlotX,iPlotY)
 	if (iWaterResult == 6) then bCanFoundCity = false end
 	if (iWaterResult == 5) then bCanFoundCity = false end
 	if (iWaterResult == 4) then 
-		-- default false at 4, unless
+		-- default false at 4, unless specific patterns
 		bCanFoundCity = false 
+
 		-- -*-
 		if ((iEast == 0) and (iWest == 0)) then bCanFoundCity = true end 
 
