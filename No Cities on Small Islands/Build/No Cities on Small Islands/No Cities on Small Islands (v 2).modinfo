@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mod id="8c623d0e-5b41-433e-bc64-470e2ff1bd4c" version="1">
+<Mod id="8c623d0e-5b41-433e-bc64-470e2ff1bd4c" version="2">
   <Properties>
     <Name>No Cities on Small Islands</Name>
     <Stability>Alpha</Stability>
@@ -7,6 +7,7 @@
     <Description>Includes a check before city building wrt the number of water tiles around the location. 
 [NEWLINE]Key DLL work by whoward69 requires Various Mod Components [ICON_FLOWER] (v 105).
 [NEWLINE]Allows for some canal-type locations.
+[NEWLINE]Polynesia, though, get to settle
 [NEWLINE]Forum discussion: 
 https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/</Description>
     <Authors>yepzer</Authors>
@@ -28,10 +29,12 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
     <Dlc id="0E3751A1-F840-4e1b-9706-519BF484E59D" minversion="0" maxversion="999" />
     <Mod id="d1b6328c-ff44-4b0d-aad7-c657f83610cd" minversion="100" maxversion="999" title="Various Mod Components [ICON_FLOWER]" />
   </Dependencies>
-  <References />
+  <References>
+    <Dlc id="ECF7C605-BA11-4CAC-8D80-D71306AAC471" minversion="0" maxversion="999" />
+  </References>
   <Blocks />
   <Files>
-    <File md5="748933DA04C4C8329D674CC453A83FAD" import="0">LUA/No Cities on Small Islands.lua</File>
+    <File md5="AEA1D731738B09F1DB89F904185E5432" import="0">LUA/No Cities on Small Islands.lua</File>
     <File md5="CEA760961F34939664B6A2A9A130C906" import="0">XML/CustomModOptions.xml</File>
   </Files>
   <Actions>

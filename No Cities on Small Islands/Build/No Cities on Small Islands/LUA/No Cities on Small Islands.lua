@@ -13,6 +13,9 @@ end
 
 --------------------------------------------------------------
 function onCanFoundCity(iPlayer,iPlotX,iPlotY)
+	
+	-- Polynesia get to settle on islands 
+	if (Game.GetActiveCivilizationType() == GameInfoTypes["CIVILIZATION_POLYNESIA"]) then return true end
 
 	-- Initialize --
 	local iEast = CountIfWater(Map.PlotDirection(iPlotX,iPlotY,DirectionTypes["DIRECTION_EAST"]))

@@ -5,12 +5,13 @@
     <ProjectGuid>{d0cb7543-8d3c-42f0-81df-03c7b5f3aa4e}</ProjectGuid>
     <Name>No Cities on Small Islands</Name>
     <Guid>8c623d0e-5b41-433e-bc64-470e2ff1bd4c</Guid>
-    <ModVersion>1</ModVersion>
+    <ModVersion>2</ModVersion>
     <Stability>Alpha</Stability>
     <Teaser>Restrict City Creation on Small Islands</Teaser>
     <Description>Includes a check before city building wrt the number of water tiles around the location. 
 [NEWLINE]Key DLL work by whoward69 requires Various Mod Components [ICON_FLOWER] (v 105).
 [NEWLINE]Allows for some canal-type locations.
+[NEWLINE]Polynesia, though, get to settle
 [NEWLINE]Forum discussion: 
 https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/</Description>
     <Authors>yepzer</Authors>
@@ -23,7 +24,15 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
     <SupportsMac>true</SupportsMac>
     <AssemblyName>No Cities on Small Islands</AssemblyName>
     <RootNamespace>No Cities on Small Islands</RootNamespace>
-    <ModReferences />
+    <ModReferences>
+      <Association>
+        <Type>Dlc</Type>
+        <Name>Kamehameha's Polynesian Empire</Name>
+        <Id>ECF7C605-BA11-4CAC-8D80-D71306AAC471</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModReferences>
     <Homepage>http://https://github.com/jesperottosen/Civ5mod-NoCitiesOnSmallIslands</Homepage>
     <ModActions>
       <Action>
