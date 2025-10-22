@@ -5,7 +5,7 @@
     <ProjectGuid>{d0cb7543-8d3c-42f0-81df-03c7b5f3aa4e}</ProjectGuid>
     <Name>No Cities on Small Islands</Name>
     <Guid>8c623d0e-5b41-433e-bc64-470e2ff1bd4c</Guid>
-    <ModVersion>2</ModVersion>
+    <ModVersion>3</ModVersion>
     <Stability>Alpha</Stability>
     <Teaser>Restrict City Creation on Small Islands</Teaser>
     <Description>Includes a check before city building wrt the number of water tiles around the location. 
@@ -33,7 +33,7 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
         <MaxVersion>999</MaxVersion>
       </Association>
     </ModReferences>
-    <Homepage>http://https://github.com/jesperottosen/Civ5mod-NoCitiesOnSmallIslands</Homepage>
+    <Homepage>https://github.com/jesperottosen/Civ5mod-NoCitiesOnSmallIslands</Homepage>
     <ModActions>
       <Action>
         <Set>OnModActivated</Set>

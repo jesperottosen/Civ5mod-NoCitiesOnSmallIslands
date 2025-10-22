@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mod id="8c623d0e-5b41-433e-bc64-470e2ff1bd4c" version="2">
+<Mod id="8c623d0e-5b41-433e-bc64-470e2ff1bd4c" version="3">
   <Properties>
     <Name>No Cities on Small Islands</Name>
     <Stability>Alpha</Stability>
@@ -13,7 +13,7 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
     <Authors>yepzer</Authors>
     <SpecialThanks>whoward69</SpecialThanks>
     <HideSetupGame>0</HideSetupGame>
-    <Homepage>http://https://github.com/jesperottosen/Civ5mod-NoCitiesOnSmallIslands</Homepage>
+    <Homepage>https://github.com/jesperottosen/Civ5mod-NoCitiesOnSmallIslands</Homepage>
     <AffectsSavedGames>0</AffectsSavedGames>
     <SupportsSinglePlayer>1</SupportsSinglePlayer>
     <SupportsMultiplayer>1</SupportsMultiplayer>
@@ -34,7 +34,7 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
   </References>
   <Blocks />
   <Files>
-    <File md5="AEA1D731738B09F1DB89F904185E5432" import="0">LUA/No Cities on Small Islands.lua</File>
+    <File md5="9C294A99B6915B6F5C216916A7704C96" import="0">LUA/No Cities on Small Islands.lua</File>
     <File md5="CEA760961F34939664B6A2A9A130C906" import="0">XML/CustomModOptions.xml</File>
   </Files>
   <Actions>

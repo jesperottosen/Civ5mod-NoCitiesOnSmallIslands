@@ -23,12 +23,6 @@ Key DLL work by whoward69 requires Various Mod Components (v 105).
 
 
 
-**Future extensions**
-
-* investigate ring 2
-
-
-
 **Forum discussion:**
 
 https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/
