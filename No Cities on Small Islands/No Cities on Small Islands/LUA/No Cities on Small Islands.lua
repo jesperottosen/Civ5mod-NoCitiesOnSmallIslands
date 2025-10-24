@@ -6,6 +6,12 @@
 print("Loaded OK")
 
 --------------------------------------------------------------
+function bool2string(bBool) 
+	if (bBool) then return "OK" end
+	return "Not OK"
+end
+
+--------------------------------------------------------------
 function CountIfWater(pPlot)
 	if pPlot:IsWater() then return 1 end
 	return 0
@@ -40,10 +46,13 @@ function WaterInNextRing2(PlotA, PlotB)
 	-- Execute
 	local iAcount = CountAroundXY(iAx,iAy)
 	local iBcount = CountAroundXY(iBx,iBy)
-	-- print ("WaterInNextRing "..iAcount.." "..iBcount)
 
-	-- evaluate
-	return ((iAcount < 4) or (iBcount < 4))
+	-- evalutate
+	local bResult = ((iAcount < 4) and (iBcount < 4))
+	-- print ("WaterInNextRing2: "..iAcount.." "..iBcount..": "..bool2string(bResult))
+
+	-- return
+	return bResult
 end
 
 --------------------------------------------------------------
@@ -60,10 +69,13 @@ function WaterInNextRing3(PlotA, PlotB, PlotC)
 	local iAcount = CountAroundXY(iAx,iAy)
 	local iBcount = CountAroundXY(iBx,iBy)
 	local iCcount = CountAroundXY(iCx,iCy)
-	-- print ("WaterInNextRing "..iAcount.." "..iBcount.." "..iCcount)
 
 	-- evaluate
-	return ((iAcount < 4) or (iBcount < 4) or (iCcount < 4))
+	local bResult = ((iAcount < 4) and (iBcount < 4) and (iCcount < 4))
+	-- print ("WaterInNextRing3: "..iAcount.." "..iBcount.." "..iCcount..": "..bool2string(bResult))
+
+	-- return
+	return bResult
 end
 
 --------------------------------------------------------------
@@ -103,20 +115,22 @@ function onCanFoundCity(iPlayer,iPlotX,iPlotY)
 		local pSouthEast = Map.PlotDirection(iPlotX,iPlotY,DirectionTypes["DIRECTION_SOUTHEAST"])
 		local pSouthWest = Map.PlotDirection(iPlotX,iPlotY,DirectionTypes["DIRECTION_SOUTHWEST"])
 
-		-- -X- 
+		--  1 1
+		-- 0 X 0
+		--  1 1 
 		if ((iEast == 0) and (iWest == 0)) then bCanFoundCity = WaterInNextRing2(pEast,pWest) end 
 
-		--  \         /  
-		--   X-  X- -X  -X
-		--      /         \
+		--  0 1     1 1     0 1     1 1
+		-- 1 X 0   1 X 0   0 X 1   0 X 1
+		--  1 1     0 1     1 1     1 0
 		if ((iEast == 0) and (iNorthWest == 0)) then bCanFoundCity = WaterInNextRing2(pEast,pNorthWest) end
 		if ((iEast == 0) and (iSouthWest == 0)) then bCanFoundCity = WaterInNextRing2(pEast,pSouthWest) end
 		if ((iWest == 0) and (iNorthEast == 0)) then bCanFoundCity = WaterInNextRing2(pWest,pNorthEast) end
 		if ((iWest == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing2(pWest,pSouthEast) end
 
-		--   / \   \   / 
-		--  X   X   X X
-		-- /     \ /   \
+		--  1 0     0 1     1 0     0 1
+		-- 1 X 1   1 X 1   1 X 1   1 X 1
+		--  0 1     1 0     0 1     1 1
 		if ((iNorthEast == 0) and (iSouthWest == 0)) then bCanFoundCity = WaterInNextRing2(pNorthEast,pSouthWest) end
 		if ((iSouthEast == 0) and (iNorthWest == 0)) then bCanFoundCity = WaterInNextRing2(pSouthEast,pNorthWest) end
 		if ((iNorthEast == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing2(pNorthEast,pSouthEast) end
@@ -136,20 +150,28 @@ function onCanFoundCity(iPlayer,iPlotX,iPlotY)
 		 local pSouthEast = Map.PlotDirection(iPlotX,iPlotY,DirectionTypes["DIRECTION_SOUTHEAST"])
 		 local pSouthWest = Map.PlotDirection(iPlotX,iPlotY,DirectionTypes["DIRECTION_SOUTHWEST"])
 
-		 --   /  \    \ / \ /
-		 --  X    X    X   X
-		 -- / \  / \  /     \
+		 --  1 0     0 1     0 0     0 0
+		 -- 1 X 1   1 X 1   1 X 1   1 X 1
+		 --  0 0     0 0     0 1     1 0
 		 if ((iNorthEast == 0) and (iSouthWest == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing3(pNorthEast,pSouthWest,pSouthEast) end
 		 if ((iNorthWest == 0) and (iSouthWest == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing3(pNorthWest,pSouthWest,pSouthEast) end
-		 if ((iNorthEast == 0) and (iSouthEast == 0) and (iSouthWest == 0)) then bCanFoundCity = WaterInNextRing3(pNorthEast,pSouthWest,pSouthWest) end
+		 if ((iSouthWest == 0) and (iNorthWest == 0) and (iNorthEast == 0)) then bCanFoundCity = WaterInNextRing3(pSouthWest,pNorthWest,pNorthEast) end
 		 if ((iNorthEast == 0) and (iNorthWest == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing3(pNorthEast,pNorthWest,pSouthEast) end
-
+		 
+		 --  1 1     1 1     0 0     0 0
+		 -- 1 X 0   0 X 1   0 X 1   1 X 0
+		 --  0 0     0 0     1 1     1 1
+		 if ((iEast == 0) and (iSouthWest == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing3(pEast,pSouthWest,pSouthEast) end
+		 if ((iWest == 0) and (iSouthWest == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing3(pWest,pSouthWest,pSouthEast) end
+		 if ((iWest == 0) and (iNorthWest == 0) and (iNorthEast == 0)) then bCanFoundCity = WaterInNextRing3(pWest,pNorthWest,pNorthEast) end
+		 if ((iEast == 0) and (iNorthWest == 0) and (iNorthEast == 0)) then bCanFoundCity = WaterInNextRing3(pEast,pNorthWest,pNorthEast) end
 	end
 
 	if (iWaterResult == 2) then bCanFoundCity = true end
 	if (iWaterResult == 1) then bCanFoundCity = true end
 	if (iWaterResult == 0) then bCanFoundCity = true end
 
+	-- return
 	return bCanFoundCity
 end
 

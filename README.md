@@ -4,9 +4,9 @@
 
 Includes a check before city building wrt the number of water tiles around the location.
 
-Allows for some canal-type locations.
+Vrsio 0.3 evaluates Water tiles in neighbourgh tiles for some patterns.  
 
-Polynesia, though, get to settle.
+Allows for some canal-type locations. Polynesia, though, get to settle as usual.
 
 
 
@@ -20,6 +20,7 @@ Key DLL work by whoward69 requires Various Mod Components (v 105).
 * The function "IsFreshWater" is really *does this field have freshwater* so it's not relevant here
 * Build the function up slowly using print statements
 * Chek your variables, and remember if you count water or land
+* booleans needs to be converted before they can be logged
 
 
 

@@ -10,13 +10,12 @@
     <Teaser>Restrict City Creation on Small Islands</Teaser>
     <Description>Includes a check before city building wrt the number of water tiles around the location. 
 [NEWLINE]Key DLL work by whoward69 requires Various Mod Components [ICON_FLOWER] (v 105).
-[NEWLINE]Allows for some canal-type locations.
-[NEWLINE]Polynesia, though, get to settle
-[NEWLINE]Forum discussion: 
+[NEWLINE]Allows for some canal-type locations. Polynesia, though, get to settle as usual.
+[NEWLINE][NEWLINE]Forum discussion: 
 https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/</Description>
     <Authors>yepzer</Authors>
     <SpecialThanks>whoward69</SpecialThanks>
-    <AffectsSavedGames>false</AffectsSavedGames>
+    <AffectsSavedGames>true</AffectsSavedGames>
     <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
     <SupportsSinglePlayer>true</SupportsSinglePlayer>
     <SupportsMultiplayer>true</SupportsMultiplayer>

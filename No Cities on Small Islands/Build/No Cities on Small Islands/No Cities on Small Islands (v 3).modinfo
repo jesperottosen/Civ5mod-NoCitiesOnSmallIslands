@@ -6,15 +6,15 @@
     <Teaser>Restrict City Creation on Small Islands</Teaser>
     <Description>Includes a check before city building wrt the number of water tiles around the location. 
 [NEWLINE]Key DLL work by whoward69 requires Various Mod Components [ICON_FLOWER] (v 105).
-[NEWLINE]Allows for some canal-type locations.
-[NEWLINE]Polynesia, though, get to settle
-[NEWLINE]Forum discussion: 
+[NEWLINE]Allows for some canal-type locations. Polynesia, though, get to settle as usual.
+[NEWLINE][NEWLINE]Forum discussion: 
 https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/</Description>
     <Authors>yepzer</Authors>
     <SpecialThanks>whoward69</SpecialThanks>
     <HideSetupGame>0</HideSetupGame>
     <Homepage>https://github.com/jesperottosen/Civ5mod-NoCitiesOnSmallIslands</Homepage>
-    <AffectsSavedGames>0</AffectsSavedGames>
+    <AffectsSavedGames>1</AffectsSavedGames>
+    <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
     <SupportsSinglePlayer>1</SupportsSinglePlayer>
     <SupportsMultiplayer>1</SupportsMultiplayer>
     <SupportsHotSeat>1</SupportsHotSeat>
@@ -34,7 +34,7 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
   </References>
   <Blocks />
   <Files>
-    <File md5="9C294A99B6915B6F5C216916A7704C96" import="0">LUA/No Cities on Small Islands.lua</File>
+    <File md5="C0509D0EF7A550B84F8DF18E8FFD1904" import="0">LUA/No Cities on Small Islands.lua</File>
     <File md5="CEA760961F34939664B6A2A9A130C906" import="0">XML/CustomModOptions.xml</File>
   </Files>
   <Actions>
