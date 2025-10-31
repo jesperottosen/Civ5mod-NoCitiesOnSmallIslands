@@ -34,7 +34,7 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
   </References>
   <Blocks />
   <Files>
-    <File md5="C0509D0EF7A550B84F8DF18E8FFD1904" import="0">LUA/No Cities on Small Islands.lua</File>
+    <File md5="01810EFFFF9C58B73ABDD173B91BE4B8" import="0">LUA/No Cities on Small Islands.lua</File>
     <File md5="CEA760961F34939664B6A2A9A130C906" import="0">XML/CustomModOptions.xml</File>
   </Files>
   <Actions>

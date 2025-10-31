@@ -13,10 +13,12 @@ end
 
 --------------------------------------------------------------
 function CountIfWater(pPlot)
+	if (pPlot == nil) then return 0 end
 	if pPlot:IsWater() then return 1 end
 	return 0
 end
 
+--------------------------------------------------------------
 function CountAroundXY(iX,iY)
 	-- initialize
 	local iEast2 = CountIfWater(Map.PlotDirection(iX,iY,DirectionTypes["DIRECTION_EAST"]))
@@ -34,18 +36,27 @@ function CountAroundXY(iX,iY)
 	return iEast2 + iWest2 + iNorthEast2 + iNorthWest2 + iSouthEast2 + iSouthWest2
 end
 
+--------------------------------------------------------------
+function getPlotCount(pPlot) 
+	-- validate
+	if (pPlot == nil) then return 0 end
+	
+	-- execute
+	local iX = pPlot:GetX()
+	local iY = pPlot:GetY()
+
+	-- return
+	local count = CountAroundXY(iX,iY)
+	print("getPlotCount: "..count)
+	return count
+end
 
 --------------------------------------------------------------
 function WaterInNextRing2(PlotA, PlotB) 
-	-- Initialize --
-	local iAx = PlotA:GetX()
-	local iAy = PlotA:GetY()
-	local iBx = PlotB:GetX()
-	local iBy = PlotB:GetY()
 
 	-- Execute
-	local iAcount = CountAroundXY(iAx,iAy)
-	local iBcount = CountAroundXY(iBx,iBy)
+	local iAcount = getPlotCount(PlotA)
+	local iBcount = getPlotCount(PlotB)
 
 	-- evalutate
 	local bResult = ((iAcount < 4) and (iBcount < 4))
@@ -57,18 +68,10 @@ end
 
 --------------------------------------------------------------
 function WaterInNextRing3(PlotA, PlotB, PlotC) 
-	-- Initialize --
-	local iAx = PlotA:GetX()
-	local iAy = PlotA:GetY()
-	local iBx = PlotB:GetX()
-	local iBy = PlotB:GetY()
-	local iCx = PlotC:GetX()
-	local iCy = PlotC:GetY()
-
-	-- Execute
-	local iAcount = CountAroundXY(iAx,iAy)
-	local iBcount = CountAroundXY(iBx,iBy)
-	local iCcount = CountAroundXY(iCx,iCy)
+-- Execute
+	local iAcount = getPlotCount(PlotA)
+	local iBcount = getPlotCount(PlotB)
+	local iCcount = getPlotCount(PlotC)
 
 	-- evaluate
 	local bResult = ((iAcount < 4) and (iBcount < 4) and (iCcount < 4))
@@ -94,9 +97,10 @@ function onCanFoundCity(iPlayer,iPlotX,iPlotY)
 	local iWaterResult = iEast + iWest + iNorthEast + iNorthWest + iSouthEast + iSouthWest
 	local bCanFoundCity = true
 
-	-- print("WaterResults1:  "..iNorthWest.." "..iNorthEast)
-	-- print("WaterResults1: "..iWest.." X "..iEast)
-	-- print("WaterResults1:  "..iSouthWest.." "..iSouthEast)
+	-- print("WaterResult1:  "..iNorthWest.." "..iNorthEast)
+	-- print("WaterResult1: "..iWest.." X "..iEast)
+	-- print("WaterResult1:  "..iSouthWest.." "..iSouthEast)
+	-- print("WaterResult1: "..iWaterResult)
 
 	--- evaluate
 	if (iWaterResult == 6) then bCanFoundCity = false end
