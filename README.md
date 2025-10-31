@@ -4,13 +4,13 @@
 
 Includes a check before city building wrt the number of water tiles around the location.
 
-Vrsio 0.3 evaluates Water tiles in neighbourgh tiles for some patterns.  
+Allows for some canal-type locations and investigates first and next tiles around the spot.
 
-Allows for some canal-type locations. Polynesia, though, get to settle as usual.
-
-
+First city has no restrictions. Polynesia, though, get to settle as ususal.
 
 Key DLL work by whoward69 requires Various Mod Components (v 105).
+
+
 
 
 
@@ -21,10 +21,23 @@ Key DLL work by whoward69 requires Various Mod Components (v 105).
 * Build the function up slowly using print statements
 * Chek your variables, and remember if you count water or land
 * booleans needs to be converted before they can be logged
+* Watch out for nil values
+
+
 
 
 
 **Forum discussion:**
 
 https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.699641/
+
+
+
+
+
+Version 0.3: First cities are ok, debugging and nil pointers
+
+Version 0.2: Polynesia gets to settle.
+
+Version 0.1: seems to work.
 

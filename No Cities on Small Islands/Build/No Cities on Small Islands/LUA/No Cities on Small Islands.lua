@@ -44,10 +44,10 @@ function getPlotCount(pPlot)
 	-- execute
 	local iX = pPlot:GetX()
 	local iY = pPlot:GetY()
-
-	-- return
 	local count = CountAroundXY(iX,iY)
-	print("getPlotCount: "..count)
+	-- print("getPlotCount: "..count)
+	
+	-- return
 	return count
 end
 
@@ -83,6 +83,11 @@ end
 
 --------------------------------------------------------------
 function onCanFoundCity(iPlayer,iPlotX,iPlotY)
+
+	-- first city has no restrictions
+	if (Players[iPlayer] == nil) then return true end
+	if (Players[iPlayer]:GetNumCities() == 0) then return true end
+
 	
 	-- Polynesia get to settle on islands 
 	if (Game.GetActiveCivilizationType() == GameInfoTypes["CIVILIZATION_POLYNESIA"]) then return true end
