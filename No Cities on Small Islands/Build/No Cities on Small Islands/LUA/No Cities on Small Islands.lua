@@ -39,7 +39,7 @@ end
 --------------------------------------------------------------
 function getPlotCount(pPlot) 
 	-- validate
-	if (pPlot == nil) then return 0 end
+	if (pPlot == nil) then return 1 end
 	
 	-- execute
 	local iX = pPlot:GetX()
@@ -167,13 +167,17 @@ function onCanFoundCity(iPlayer,iPlotX,iPlotY)
 		 if ((iSouthWest == 0) and (iNorthWest == 0) and (iNorthEast == 0)) then bCanFoundCity = WaterInNextRing3(pSouthWest,pNorthWest,pNorthEast) end
 		 if ((iNorthEast == 0) and (iNorthWest == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing3(pNorthEast,pNorthWest,pSouthEast) end
 		 
-		 --  1 1     1 1     0 0     0 0
-		 -- 1 X 0   0 X 1   0 X 1   1 X 0
-		 --  0 0     0 0     1 1     1 1
-		 if ((iEast == 0) and (iSouthWest == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing3(pEast,pSouthWest,pSouthEast) end
+		 --  1 1    1 1    0 0    0 0    0 1    1 0    1 1    1 1
+		 -- 1 X 0  0 X 1  0 X 1  1 X 0  0 X 0  0 X 0  0 X 0  0 X 0
+ 		 --  0 0    0 0    1 1    1 1    1 1    1 1    0 1    1 0
+ 		 if ((iEast == 0) and (iSouthWest == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing3(pEast,pSouthWest,pSouthEast) end
 		 if ((iWest == 0) and (iSouthWest == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing3(pWest,pSouthWest,pSouthEast) end
 		 if ((iWest == 0) and (iNorthWest == 0) and (iNorthEast == 0)) then bCanFoundCity = WaterInNextRing3(pWest,pNorthWest,pNorthEast) end
 		 if ((iEast == 0) and (iNorthWest == 0) and (iNorthEast == 0)) then bCanFoundCity = WaterInNextRing3(pEast,pNorthWest,pNorthEast) end
+		 if ((iWest == 0) and (iEast == 0) and (iNorthWest == 0)) then bCanFoundCity = WaterInNextRing3(pWest,pEast,pNorthWest) end
+		 if ((iWest == 0) and (iEast == 0) and (iNorthEast == 0)) then bCanFoundCity = WaterInNextRing3(pWest,pEast,pNorthEast) end
+		 if ((iWest == 0) and (iEast == 0) and (iSouthWest == 0)) then bCanFoundCity = WaterInNextRing3(pWest,pEast,pSouthWest) end
+		 if ((iWest == 0) and (iEast == 0) and (iSouthEast == 0)) then bCanFoundCity = WaterInNextRing3(pWest,pEast,pSouthEast) end
 	end
 
 	if (iWaterResult == 2) then bCanFoundCity = true end
@@ -181,6 +185,7 @@ function onCanFoundCity(iPlayer,iPlotX,iPlotY)
 	if (iWaterResult == 0) then bCanFoundCity = true end
 
 	-- return
+	-- print("bCanFoundCity "..bool2string(bCanFoundCity)) 
 	return bCanFoundCity
 end
 
