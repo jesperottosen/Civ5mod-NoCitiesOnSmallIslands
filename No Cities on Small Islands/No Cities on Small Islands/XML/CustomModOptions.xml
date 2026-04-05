@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GameData>
   <CustomModOptions>
-    <!-- Event sent about city founding (v68) -->
-    <!--   GameEvents.PlayerCanFoundCity.Add(function(iPlayer, iPlotX, iPlotY) return true end) -->
-    <!--   GameEvents.PlayerCanFoundCityRegardless.Add(function(iPlayer, iPlotX, iPlotY) return false end) -->
+	  <!-- Event sent about city founding (v68) -->
+	  <!--   GameEvents.PlayerCanFoundCity.Add(function(iPlayer, iPlotX, iPlotY) return true end) -->
+	  <!--   GameEvents.PlayerCanFoundCityRegardless.Add(function(iPlayer, iPlotX, iPlotY) return false end) -->
 	  <Update>
 		  <Where Name="EVENTS_CITY_FOUNDING"/>
+		  <Set Value="1"/>
+	  </Update>
+
+	  <!--  Enables production to be stockpiled (v28)  -->
+	  <!--  See also: "Buildings - Storage Yard and Stockpile"  -->
+	  <Update>
+		  <Where Name="PROCESS_STOCKPILE"/>
 		  <Set Value="1"/>
 	  </Update>
   </CustomModOptions>

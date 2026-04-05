@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mod id="8c623d0e-5b41-433e-bc64-470e2ff1bd4c" version="3">
+<Mod id="8c623d0e-5b41-433e-bc64-470e2ff1bd4c" version="4">
   <Properties>
     <Name>No Cities on Small Islands</Name>
     <Stability>Alpha</Stability>
@@ -36,7 +36,7 @@ https://forums.civfanatics.com/threads/can-i-restrict-cities-on-small-islands.69
   <Blocks />
   <Files>
     <File md5="1FDF74D2033FB1AD92DE4E19E62D5167" import="0">LUA/No Cities on Small Islands.lua</File>
-    <File md5="CEA760961F34939664B6A2A9A130C906" import="0">XML/CustomModOptions.xml</File>
+    <File md5="D35FF94F4E7D7FDB40CD8CA426B1951C" import="0">XML/CustomModOptions.xml</File>
   </Files>
   <Actions>
     <OnModActivated>
