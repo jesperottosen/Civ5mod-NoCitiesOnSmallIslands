@@ -8,13 +8,6 @@
 		  <Where Name="EVENTS_CITY_FOUNDING"/>
 		  <Set Value="1"/>
 	  </Update>
-
-	  <!--  Enables production to be stockpiled (v28)  -->
-	  <!--  See also: "Buildings - Storage Yard and Stockpile"  -->
-	  <Update>
-		  <Where Name="PROCESS_STOCKPILE"/>
-		  <Set Value="1"/>
-	  </Update>
   </CustomModOptions>
 
 </GameData>

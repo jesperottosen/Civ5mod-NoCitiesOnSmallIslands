@@ -5,11 +5,11 @@
     <ProjectGuid>{d0cb7543-8d3c-42f0-81df-03c7b5f3aa4e}</ProjectGuid>
     <Name>No Cities on Small Islands</Name>
     <Guid>8c623d0e-5b41-433e-bc64-470e2ff1bd4c</Guid>
-    <ModVersion>4</ModVersion>
+    <ModVersion>3</ModVersion>
     <Stability>Alpha</Stability>
     <Teaser>Restrict City Creation on Small Islands</Teaser>
     <Description>Includes a check before city building wrt the number of water tiles around the location. 
-[NEWLINE]Key DLL work by whoward69 requires Various Mod Components [ICON_FLOWER] (v 105).
+[NEWLINE]Key DLL work by whoward69 requires Various Mod Components [ICON_FLOWER] (v 106).
 [NEWLINE]Allows for some canal-type locations. Polynesia, though, get to settle as usual.
 [NEWLINE]First city has no restrictions.
 [NEWLINE][NEWLINE]Forum discussion: 
